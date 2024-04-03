@@ -18,7 +18,6 @@ exports.uploadImageToCloudinary = async (file, folder, height, quality) => {
     options.quality = quality
   }
   options.resource_type = "auto"
-  console.log("OPTIONS", options)
   return await cloudinary.uploader.upload(file.tempFilePath, options)
 }
 
@@ -27,7 +26,6 @@ function extractPublicId  (imageUrl)  {
   const parts = imageUrl.split('/');
   const filename = parts[parts.length - 2] + "/" + parts[parts.length - 1];
   const publicId = filename.split('.')[0];
-  console.log('publicId: ', publicId);
   return publicId;
 }
 

@@ -19,7 +19,6 @@ exports.addBanner = async (req, res) => {
             banner,
             process.env.FOLDER_NAME
         )
-        console.log(thumbnailImage)
 
         const record = await Banner.create({
             imageUrl: thumbnailImage.secure_url,
@@ -35,7 +34,6 @@ exports.addBanner = async (req, res) => {
         })
 
     } catch (error) {
-        console.log('error: ', error);
         return res.status(500).json({
             success: false,
             message: "Interval Server error",
@@ -80,9 +78,7 @@ exports.deleteBanner = async (req, res) => {
         }
 
         const imageDeleted = await deleteImageFromCloudinary(banner.imageUrl);
-        console.log('imageDeleted: ', imageDeleted);
         const result = await Banner.findByIdAndUpdate(id, { isDelete: true });
-        console.log('result: ', result);
 
         return res.status(200).json({
             success: true,
@@ -107,7 +103,6 @@ exports.addTrendingHouse = async (req, res) => {
             })
         }
         const thumbnailImage = await uploadImageToCloudinary(banner, process.env.FOLDER_NAME);
-        console.log('thumbnailImage: ', thumbnailImage);
 
         const trendingHouse = await HouseElevations.create({
             imageUrl: thumbnailImage.secure_url,
@@ -167,10 +162,7 @@ exports.deleteTrendingHouse = async (req,res) => {
         }
 
         const imageDeleted = await deleteImageFromCloudinary(banner.imageUrl);
-        console.log('imageDeleted: ', imageDeleted);
         const result = await HouseElevations.findByIdAndDelete(id);
-        console.log('result: ', result);
-        console.log("test");
         return res.status(200).json({
             success: true,
             message: "Banner deleted successfully",
