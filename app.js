@@ -29,6 +29,11 @@ Cloudinary.cloudinaryConnect();
 app.use("/api/v1", routes)
 
 
+app.get("/", (req,res) => {
+	res.send("server is up")
+})
+
+
 app.listen(8080, () => {
     console.log("Server is running at port 8080");
 })
