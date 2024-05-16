@@ -10,8 +10,10 @@ router.post("/addTredningHouse", banner.addTrendingHouse);
 router.post("/getTrendingHouses", banner.getTrendingHouse);
 router.post("/deleteTrendingHouse", banner.deleteTrendingHouse);
 
+router.post("/addEnquiry", banner.AddEnquiry);
+
 
 // router.post("/addHouseElevation", banner.addHouseElevation);
 // router.get("/getHouseElevation", banner.getHouseElevation)
 
-module.exports = router;
+module.exports = router; 
